@@ -1,0 +1,27 @@
+import joblib
+import pandas as pd
+
+# Cargar pipeline
+modelo = joblib.load("pipeline_boston.pkl")
+
+# Crear datos nuevos (ejemplo)
+nueva_casa = pd.DataFrame([{
+    "CRIM": 0.1,
+    "ZN": 18.0,
+    "INDUS": 2.31,
+    "CHAS": 0,
+    "NOX": 0.538,
+    "RM": 6.575,
+    "AGE": 65.2,
+    "DIS": 4.09,
+    "RAD": 1,
+    "TAX": 296,
+    "PTRATIO": 15.3,
+    "B": 396.9,
+    "LSTAT": 4.98
+}])
+
+# Predicción
+prediccion = modelo.predict(nueva_casa)
+
+print("Precio estimado:", prediccion[0])
